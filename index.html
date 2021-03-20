@@ -5,8 +5,46 @@
 <style>
 body{
 position:relative;
+background-color: #DCE1E3;
 }
 .header{
+background-color:#ffffff;
+padding:0px;
+margin:0px;
+width:100%;
+}
+#dashdropdown  {
+  position:absolute;
+  z-index: 1;
+  min-width:135px;
+  height:auto;
+  padding:20px;
+  background-color:#FFFFFF;opacity:0.9;
+  display:none;
+  
+}
+
+.usericons{
+   top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+div#dashdropdown a{
+text-decoration:none;
+color:black;
+}
+
+.tooltip{
+  position:absolute;
+  border-radius: 6px;
+  background-color:#FFFFFF;opacity:0.9;
+  min-width:80px;
+  margin-top:10px;
+
+}
+.tooltext{
+  text-align:center;
+  font-size:18px;
 }
 </style>
 <head>
@@ -19,9 +57,46 @@ AluminiDonate
 <body>
 
 <div class="header">
-<span>
+<span style="font-size:35px;font-family:Verdana,sans-serif;">
 <img src="images/alumnicon.png" width="50px";height="50px" style="vertical-align:middle"/>AlumniDonate</span>
+
+<div class="usericons"style="display:inline-block; position:absolute; right:50px;">
+
+<div id="dashboardinfo" style="margin-right:20px;display:inline-block;position:relative">
+<a href="">
+
+<img src="images/user.png" width="50px" height="35px">
+</a>
+<div id="dashdropdown"  >
+<a href="">
+<div style="padding-bottom:13px;">
+<span><img src="images/dashboard.png" onmouseover="userDashDropDownHover()" width="20px";height="20px" style="vertical-align:middle;margin-right:10px"/>My Account</span>
+</a>
+</div>
+<div style="padding-bottom:8px;">
+<a href="">
+<span><img src="images/login.png" width="20px";height="20px" style="vertical-align:middle;margin-right:10px"/>Login</span></div>
+</a>
 </div>
 
+</div>
+
+<div id="cart" style="display:inline-block;position:relative">
+<img src="images/cart.png" width="50px" height="35px">
+<div class="tooltip" >
+<span class="tooltext">View Cart</span>
+
+</div>
+
+</div>
+</div>
+ <script>
+function userDashDropDownHover(){
+document.getElementById("dashdropdown").style.display="block";
+}
+ 
+ </script>
 </body>
+
+
 </html>
