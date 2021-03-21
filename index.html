@@ -59,6 +59,15 @@ padding-left:8px;
 padding-right:8px;
 margin:auto;
 }
+.header a[href="#index"]{
+text-decoration:none;
+color:black;
+}
+
+.slideshow{
+display:none;
+}
+
 </style>
 <head>
 <title>
@@ -70,8 +79,10 @@ AluminiDonate
 <body>
 
 <div class="header">
+<a href="#index" >
 <span style="font-size:35px;font-family:Verdana,sans-serif;">
 <img src="images/alumnicon.png" width="50px" height="50px" style="vertical-align:middle"/>AlumniDonate</span>
+</a>
 
 <div class="usericons"style="display:inline-block; position:absolute; right:50px;">
 <div id="dashboardinfo" style="margin-right:20px; display:inline-block; position:relative" onmouseover="userDashDropDownHover()" onmouseout="userDashDropDownHoverOut()">
@@ -87,9 +98,10 @@ AluminiDonate
 <span id="myaccountspan" > <img id="myaccountimage" src="images/dashboard.png" width="20px" height="20px" style="vertical-align:middle;margin-right:10px"/>My Account</span>
 </a>
 </div>
-<div style="padding-bottom:13px;" >
+<div style="padding-bottom:13px;" id="login" onmouseover="loginHover()" onmouseout="loginHoverOut()">
 <a href="">
-<span  id="login"><img id="loginimage" src="images/login.png" width="20px" height="20px" style="vertical-align:middle;margin-right:10px"/>Login</span></div>
+<span  id="loginspan"><img id="loginimage" src="images/login.png" width="20px" height="20px" style="vertical-align:middle;margin-right:10px"/>Login</span>
+</div>
 </a>
 </div>
 
@@ -113,6 +125,7 @@ AluminiDonate
 
 
 
+
 </body>
 
  <script>
@@ -130,10 +143,32 @@ document.getElementById("cartimage").src="images/cartorange.png";
 
 }
 function myAccountHover(){
-document.getElementById("myaccount").style.backgroundColor="red";
+document.getElementById("myaccount").style.backgroundColor="#FF7500";
+document.getElementById("myaccountspan").style.color="white";
+document.getElementById("myaccountimage").src="images/dashboardwhite.png";
+
 
 
 }
+function loginHover(){
+document.getElementById("login").style.backgroundColor="#FF7500";
+document.getElementById("loginspan").style.color="white";
+document.getElementById("loginimage").src="images/loginwhite.png";
+}
+
+function loginHoverOut(){
+document.getElementById("login").style.backgroundColor="white";
+document.getElementById("loginspan").style.color="black";
+document.getElementById("loginimage").src="images/login.png";
+}
+
+function myAccountHoverOut(){
+document.getElementById("myaccount").style.backgroundColor="white";
+document.getElementById("myaccountspan").style.color="black";
+document.getElementById("myaccountimage").src="images/dashboard.png";
+
+}
+
 function cartHoverOut(){
 document.getElementById("tooltip").style.display="none";
 document.getElementById("tooltext").style.display="none";
