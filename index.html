@@ -10,14 +10,18 @@ background-color: #DCE1E3;
 }
 .header{
 background-color:#ffffff;
-padding:0px;
-margin:0px;
-width:100%;
+padding:10px;
+
+position:fixed;
+top:0px;
+left:0px;
+right:0px;
+z-index:2px;
 }
 #dashdropdown  {
   position:absolute;
-  z-index: 1;
-  min-width:160px;
+  z-index: 2;
+  min-width:170px;
   height:auto;
   background-color:#FFFFFF;opacity:0.9;
   display:none;
@@ -65,8 +69,44 @@ color:black;
 }
 
 .slideshow{
+position:absolute;
+  z-index:-1;
+  margin-top:80px;
+  left:0px;
+  right:0px;
+
+}
+.slideimage{
+  float:left;
+
+object-fit:fill;
+width:70%;
+height:500px;
 display:none;
 }
+
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+
 
 </style>
 <head>
@@ -100,7 +140,7 @@ AluminiDonate
 </div>
 <div style="padding-bottom:13px;" id="login" onmouseover="loginHover()" onmouseout="loginHoverOut()">
 <a href="">
-<span  id="loginspan"><img id="loginimage" src="images/login.png" width="20px" height="20px" style="vertical-align:middle;margin-right:10px"/>Login</span>
+<span  id="loginspan"><img id="loginimage" src="images/login.png" width="20px" height="20px" style="vertical-align:middle;margin-right:10px"/>Login/Sign Up</span>
 </div>
 </a>
 </div>
@@ -124,11 +164,44 @@ AluminiDonate
 </div>
 
 
+<div class="slideshow">
+<img class="slideimage fade" src="images/slideshow1.jpg"/>
 
+<img class="slideimage fade" src="images/slideshow2.jpg" />
+
+
+
+<img class="slideimage fade" src="images/slideshow3.jpg" />
+
+</div>
 
 </body>
 
  <script>
+ var slideIndex=0;
+ var slide=document.getElementsByClassName("slideimage");
+ showslides();
+
+ function showslides(){
+
+ for(i=0;i<slide.length;++i){
+
+ if(i!=slideIndex){
+ slide[i].style.display="none";
+ }
+ else{
+  slide[i].style.display="block";
+
+ }
+ }
+ ++slideIndex;
+ if(slideIndex==slide.length){
+ slideIndex=0;
+ }
+setTimeout(showslides,5000);
+
+ 
+ }
  function userDashDropDownHover(){
 document.getElementById("dashdropdown").style.display="block";
 }
