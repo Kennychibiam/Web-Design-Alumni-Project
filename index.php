@@ -8,7 +8,6 @@
 
 
 body{
-position:relative;
 background-color: #DCE1E3;
 }
 .header{
