@@ -9,8 +9,7 @@
 <style>
 
 body{
-	position:relative;
-background-color: #DCE1E3;
+background-color: #ffffff;
 
 }
 
@@ -22,7 +21,7 @@ position:fixed;
 top:0px;
 left:0px;
 right:0px;
-z-index:2px;
+z-index:30px;
 }
 #dashdropdown  {
   position:absolute;
@@ -65,21 +64,16 @@ color:black;
 #cartlink{
 	text-decoration:none;
 	color:black;
-	top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
+	
 }
 #myaccount{
 padding-left:8px;
 padding-right:8px;
 margin:auto;
 }
-#login{
-padding-left:8px;
-padding-right:8px;
-margin:auto;
-}
+
+
+
 .header a[href="#index"]{
 text-decoration:none;
 color:black;
@@ -90,11 +84,60 @@ color:black;
 
 #loginform{
 	position:absolute;
-	vertical-align:middle;
-	top:50px;
+     top: 50%;
+    left: 50%;
+    margin-right: -50%;
+	margin-bottom:50%;
+    transform: translate(-50%, -50%);
+	
+}
+
+#login{
+padding-left:8px;
+padding-right:8px;
+margin:auto;
+}
+
+#spancreateaccount{
+	text-align:center;
+	
+}
+form input{
+	border-left:none;
+    border-right:none;
+	border-top:none;
+	background-color:#ffffff;
+
+	height:50px;
+	
+}
+form input:focus{
+	
+	outline:none;
+    box-shadow: 0 0 10px #719ECE;
+	
 
 	
 }
+#submitbutton{
+	margin-top:30px;
+	display:block;
+	width:100%;
+	background-color: #FF7500; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+   text-decoration: none;
+   font-size: 16px;
+    cursor: pointer;
+	
+}
+#submitbutton:hover{
+		background-color: #4CAF50; 
+
+	
+}
+
 </style>
 
 </head>
@@ -153,11 +196,29 @@ color:black;
 
 
 <div id="loginform">
-<div>
-<span  style="font-size:30px;color:grey">CREATE AN ACCOUNT</span></div>
-<form>
-<div style="display:inline-block">  <input type="text" placeholder="First Name" name="firstname"/>  </div>
-<div style="display:inline-block">  <input type="text" placeholder="Last Name" name="lasttname"/>  </div>
+<div  id="spancreateaccount"><span   style="font-size:30px;color:grey;">CREATE AN ACCOUNT</span></div>
+
+<form   action="login.php" method="POST" autocomplete="on" >
+<div style="display:inline-block">  <input type="text" placeholder="First Name" name="firstname" style="width:300px" required/>  </div>
+<div style="display:inline-block;margin-left:20px" >  <input type="text" placeholder="Last Name" name="lasttname"style="width:300px" required/>  </div>
+
+<div class="matricpassword" style="margin-top:50px">
+
+<div style="display:inline-block;"><input type="email" name="email" placeholder="Email" style="width:300px" required></div>
+
+<div  style="display:inline-block;margin-left:20px" ><input type="text" name="matricno" placeholder="Matric No" style="width:300px" required></div>
+</div>
+
+<div style="margin-top:50px;"><span style="margin-right:10px;">(+234)</span><input type="tel" placeholder="Phone" name="phone" size="11" style="width:230px" required></div>
+
+
+
+<div style="display:inline-block" ><input style="margin-top:50px;width:300px" type="password" name="password" placeholder="Password" value="" required></div>
+<div style="display:inline-block"  ><input style="margin-top:50px;width:300px;margin-left:20px"type="password" name="confirm" placeholder="Confirm "  required></div>
+
+<input type="button" id="submitbutton" value="CREATE ACCOUNT">
+
+
 
 
 
