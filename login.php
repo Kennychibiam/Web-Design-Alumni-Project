@@ -200,7 +200,7 @@ form input:focus{
 
 <form   action="login.php" method="POST" autocomplete="on" >
 <div style="display:inline-block">  <input type="text" placeholder="First Name" name="firstname" style="width:300px" required/>  </div>
-<div style="display:inline-block;margin-left:20px" >  <input type="text" placeholder="Last Name" name="lasttname"style="width:300px" required/>  </div>
+<div style="display:inline-block;margin-left:20px" >  <input type="text" placeholder="Last Name" name="lastname"style="width:300px" required/>  </div>
 
 <div class="matricpassword" style="margin-top:50px">
 
@@ -209,8 +209,17 @@ form input:focus{
 <div  style="display:inline-block;margin-left:20px" ><input type="text" name="matricno" placeholder="Matric No" style="width:300px" required></div>
 </div>
 
-<div style="margin-top:50px;"><span style="margin-right:10px;">(+234)</span><input type="tel" placeholder="Phone" name="phone" size="11" style="width:230px" required></div>
+<div style="margin-top:50px;" >
+<div style="display:inline-block"><span style="margin-right:10px;">(+234)</span><input type="tel" placeholder="Phone" name="phone" size="11" style="width:230px" required></div>
 
+<div  style="display:inline-block;margin-left:20px">
+
+<div><span style="color:grey">You can change this later</span></div>
+<label style="position:relative;color:grey" for="alumni">Alumni</label> <input style="position:relative;top:20px;bottom:0px" id="alumni"type="radio" name="selectstatus" value="alumni"required>
+
+<label style="margin-left:20px;color:grey" for="undergrad">Undergraduate</label> <input style="margin-left:20px;position:relative;top:20px" id="undergrad" type="radio" name="selectstatus" value="undergraduate" required > </div>
+
+</div>
 
 
 <div style="display:inline-block" ><input style="margin-top:50px;width:300px" type="password" name="password" placeholder="Password" value="" required></div>
@@ -282,6 +291,24 @@ document.getElementById("cartimage").src="images/cart.png";
 </body>
 
 </html>
+</php
+fuction processLogIn(){
+	$formNames=["firstname","lastname","email","matricno","phone","password","confirm"];
+	$canProcess=true;
+	
+	foreach($formNames as $field){
+		if(!isset($_POST[$field])){
+			$canProcess=false;
+		}
+		
+	
+	if(canProcess){
+		
+		
+	}
+}
 
+
+?>
 ​
 
