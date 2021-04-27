@@ -6,7 +6,6 @@
 <html>
 
 <head>
-<title>Login</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -19,6 +18,7 @@ background-color: #ffffff;
 .header{
 background-color:#ffffff;
 padding:10px;
+
 
 position:fixed;
 top:0px;
@@ -74,7 +74,9 @@ padding-left:8px;
 padding-right:8px;
 margin:auto;
 }
-
+#homepagename{
+text-decoration:none;
+}
 
 
 .header a[href="#index"]{
@@ -93,10 +95,24 @@ color:black;
 
 <body>
 <div class="header">
-<a href="#index" >
+<a id="homepagename" href="i.php" >
 <span style="font-size:35px;font-family:Verdana,sans-serif;">
 <img src="images/alumnicon.png" width="50px" height="50px" style="vertical-align:middle"/>AlumniDonate</span>
 </a>
+
+
+<div id="searchwrap" >
+   <form action="" method="GET">
+      <input type="text" class="searchTerm" placeholder="Search..." name="inputsearch">
+      
+	  <!--<button type="submit" id="searchButton">
+        <img id="searchimage" src="images/search.png" width="30px" height="40px"/>
+     </button>-->
+	 </form>
+</div>
+
+
+
 
 
 
@@ -108,7 +124,7 @@ color:black;
 
 <a href="">
 
-<img src="images/user.png" width="50px" height="35px" />
+<img id="avatarimg"  width="50px" height="35px" style="border-radius:50%;background-color:#DCE1E3;padding:3px"/>
 </a>
 <div id="dashdropdown">
 <div id="myaccount" style="padding-bottom:13px;" onmouseover="myAccountHover()" onmouseout="myAccountHoverOut()">
@@ -138,6 +154,9 @@ color:black;
 </div>
 ​</div>
 </a>
+
+<div></div>
+
 </div>
 
 </div>
@@ -156,6 +175,25 @@ color:black;
 
 
 <script>
+
+ var avatar="<?php 
+ if(empty($_SESSION['avatar'])){
+	echo null; 
+ }
+ else{
+ echo $_SESSION['avatar'];}?>";
+ if(avatar!=null  || avatar!=""){
+	 	document.getElementById('avatarimg').src="useruploads/"+avatar;
+        document.getElementById('avatarimg').style.backgroundColor='';
+
+ }
+ else{
+	 	 alert("null");
+
+	document.getElementById('avatarimg').src="images/defaultUserPic.png";
+        document.getElementById('avatarimg').style.backgroundColor='#DCE1E3'; 
+ }
+
 
 function userDashDropDownHover(){
 document.getElementById("dashdropdown").style.display="block";
