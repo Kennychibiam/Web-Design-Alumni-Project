@@ -1,4 +1,6 @@
-<?php include "head.php"
+<?php
+ session_start();
+include "head.php"
 
 ?>
 <! DOCTYPE html>
@@ -21,6 +23,11 @@ body{
 	width:50%;
 
 }
+#searchwrap{
+	display:none;
+	
+}
+
 #picform{
 	position:absolute;
     top: 50%;
@@ -65,7 +72,7 @@ input[type="file"]{
 <form  id="picform" action="dashboard.php" method="post" enctype="multipart/form-data">
 <div class="pictureUploadDiv">
 <label for="pictureupload" id="labelForInputFile"> 
-	 <img id="avatarimg" width=80px; height=80px; src="images/defaultUserPic.png" style="background-color:#DCE1E3;border-radius: 50%;padding:10px"/>
+	 <img id="profileavatarimg" width=80px; height=80px; name="profileImage" style="background-color:#DCE1E3;border-radius: 50%;padding:10px"/>
 
   </label>
 <input type="file" name="dashboardpic" id="pictureupload">
@@ -90,23 +97,25 @@ input[type="file"]{
 
 <script>
 document.getElementById("username").innerHTML="<?php echo $_SESSION['username'];?>";
-//document.getElementById('avatarimg').src='$folder';
-var test="sup"
-<?php
 
-//if(is_null($_SESSION["avatar"])){
-	echo "<script>
-			  alert(test);
-			</script>";
-	
-//}
+var avatar="<?php  echo $_SESSION['avatar'];?>";
+if(avatar!=null || avatar!=""){
+	document.getElementById('profileavatarimg').src="useruploads/"+avatar;
+document.getElementById('profileavatarimg').style.backgroundColor='';
+}
+else{
 
-?>
+	document.getElementById('profileavatarimg').src="images/defaultUserPic.png";
+	document.getElementById('profileavatarimg').style.backgroundColor='#DCE1E3';
+
+}
+
+
 
 
 </script>
 <?php
-   if (isset($_POST['avatarapprove'])) {
+   if (isset($_POST['avatarapprove']) AND strlen($_FILES["dashboardpic"]["name"])>0) {
 	    $host = "localhost";
         $username = "root";
         $databasepassword = "database1234567";
@@ -132,9 +141,12 @@ var test="sup"
 	   mysqli_query($conn,$sql);
 	   
 	   if (move_uploaded_file($tempname, $folder))  {
-		   $_SESSION["avatar"]=$folder;
-            echo "<script>alert('Image uploaded successfully');</script>";
+		   $_SESSION["avatar"]="useruploads/".$filename;
+            //echo "<script>alert('Image uploaded successfully');</script>";
 			echo "<script>
+			  document.getElementById('profileavatarimg').src='$folder';
+			  document.getElementById('profileavatarimg').style.backgroundColor='';
+			  
 			  document.getElementById('avatarimg').src='$folder';
 			  document.getElementById('avatarimg').style.backgroundColor='';
 			</script>";
@@ -144,8 +156,8 @@ var test="sup"
 	   
 	   
         }
-	   
-	   
+	   $_FILES="";
+	   echo "<script>document.getElementById('pictureupload').value=null;</script>";
 	   
    }
 
