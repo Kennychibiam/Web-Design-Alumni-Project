@@ -1,4 +1,9 @@
+<?php   session_start();
+ include "head.php";
 
+
+
+?>
 
 
 <!DOCTYPE html>
@@ -26,6 +31,11 @@ left:0px;
 right:0px;
 z-index:30px;
 }
+#searchwrap{
+	display:none;
+	
+}
+
 #dashdropdown  {
   position:absolute;
   z-index: 2;
