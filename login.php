@@ -1,10 +1,14 @@
-<?php include "head.php"?>
+<?php 
+
+session_start();
+include "head.php"?>
 
 
 <!DOCTYPE html>
 <html>
 <head>
 <title>Log In</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 input:-webkit-autofill {
@@ -28,6 +32,10 @@ form input{
 	height:50px;
 	
 } 
+#searchwrap{
+	display:none;
+	
+}
 
 #submit,.reset{
 	margin-top:30px;
@@ -113,6 +121,11 @@ a[href="createaccount.php"]{
  
  
  if(isset($_POST["matricno"])&&isset($_POST["password"])){
+	// $_SESSION["status"]="empty";
+	 //$_SESSION["matricno"]="empty";
+	 //$_SESSION["avatar"]="empty";
+	 
+	 
  $host = "localhost";
 $username = "root";
 $databasepassword = "database1234567";
@@ -141,6 +154,7 @@ $password= $_POST["password"];
 			if($row["username"]==null){
               $checkIfUserExists=null;
 			$_SESSION["username"]=$row["firstname"];
+			
 			}else{
 				$_SESSION["username"]=$row["username"];
                 $checkIfUserNameExists=$row["username"];
@@ -148,17 +162,17 @@ $password= $_POST["password"];
 			}
 			
 			$_SESSION["status"]=$row["status"];
-			
-		}         
-		    if(is_null($checkIfUserNameExists)){
-				echo "<script>alert('Username doesn't Exists')</script>";
+	        $_SESSION["matricno"]=$row["matricno"];
+			$_SESSION["avatar"]=$row["avatar"];
 
-			}
-			else{
-				echo "<script>alert('Username Exists')</script>";
-			}
+		}         
+		    
 			
-			
+			echo "<script> window.location.assign('dashboard.php'); </script>";
+                   exit();
+				   echo "<script>document.getElementById('matricno').value=null;
+			document.getElementById('password').value=null;
+			</script>";
 			
 
 	}else{
@@ -171,19 +185,17 @@ $password= $_POST["password"];
 
  }
  
+     $_POST=array();
+ 
+ 
  }
 
-	 				 $_POST=array();
 
 ?>
 
 <script>
 
-var matric=document.getElementById("matricno");
-matricno.value="";
+			
 
-var password=document.getElementById("password");
-password.value="";
 
-document.getElementById("form").reset();
 </script>
