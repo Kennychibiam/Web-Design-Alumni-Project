@@ -83,8 +83,71 @@ text-decoration:none;
 text-decoration:none;
 color:black;
 }
+#searchimage{
+position:relative;
+top: 50%;
+left:50%; 
+ transform: translate(-50%, -50%);
+}
 
 
+#searchwrap{
+position:absolute;
+display:inline-block;
+top: 50%;
+left:50%; 
+ transform: translate(-50%, -50%);
+ margin-top:7px;
+}
+
+.searchTerm {
+  width: 350px;
+  border: 3px solid #777777;  
+  height: 40px;
+  border-radius: 5px 5px 5px 5px;
+  outline: none;
+  color: gray;
+  margin:0px;
+  padding:0px;
+}
+
+
+#searchButton {
+position:relative;
+left:0;
+  width: 40px;
+  height:auto;
+  border: 1px solid #00B4CC;
+  background: #DCE1E3;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  margin:0;
+  padding:0;
+}
+
+#bell{
+	display:inline-block;
+	
+}
+#bellTooltip{
+	 position:absolute;
+  border-radius: 6px;
+  background-color:#FFFFFF;
+  opacity:0.9;
+  min-width:80px;
+  margin-top:5px;
+    display:none;
+	
+	
+}
+#bellTooltext{
+	text-align:center;
+  font-size:18px;
+    display:none;
+
+	
+}
 
 
 
@@ -122,14 +185,14 @@ color:black;
 
 <div id="dashboardinfo" style="margin-right:20px; display:inline-block; position:relative" onmouseover="userDashDropDownHover()" onmouseout="userDashDropDownHoverOut()">
 
-<a href="">
+<a href="" >
 
 <img id="avatarimg"  width="50px" height="35px" style="border-radius:50%;background-color:#DCE1E3;padding:3px"/>
 </a>
 <div id="dashdropdown">
 <div id="myaccount" style="padding-bottom:13px;" onmouseover="myAccountHover()" onmouseout="myAccountHoverOut()">
 
-<a href="">
+<a href="" onclick="toDashboard()" target="_blank">
 <span id="myaccountspan" > <img id="myaccountimage" src="images/dashboard.png" width="20px" height="20px" style="vertical-align:middle;margin-right:10px"/>My Account</span>
 </a>
 </div>
@@ -155,7 +218,16 @@ color:black;
 ​</div>
 </a>
 
-<div></div>
+
+
+<div id="bell">
+<img src="images/bell.png" id="bellimage" width="50px" height="35px" onmouseover="bellHover()" onmouseout="bellHoverOut()"/>
+
+<div id="bellTooltip" >
+<span id="bellTooltext">Notifications</span>
+</div>
+
+</div>
 
 </div>
 
@@ -241,6 +313,42 @@ document.getElementById("tooltext").style.display="none";
 document.getElementById("cartimage").src="images/cart.png";
 
 }
+
+function bellHoverOut(){
+document.getElementById("bellTooltip").style.display="none";
+document.getElementById("bellTooltext").style.display="none";
+document.getElementById("bellimage").src="images/bell.png";
+
+}
+
+
+function bellHover(){
+document.getElementById("bellTooltip").style.display="block";
+document.getElementById("bellTooltext").style.display="block";
+document.getElementById("bellimage").src="images/bellyellow.png";
+
+
+}
+
+
+function toDashboard(){
+	var isLoggedIn="<?php echo $_SESSION['isLoggedIn']?>";
+	if(isLoggedIn){
+		window.location.assign('dashboard.php');
+		
+	}
+	else{
+		
+            alert("not logged");		
+			window.location.assign('login.php');
+	
+	}
+	
+	
+}
+
+
+
 </script>
 
 
