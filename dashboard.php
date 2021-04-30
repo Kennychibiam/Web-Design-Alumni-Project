@@ -16,11 +16,7 @@ body{
 }
 
 #userpic{
-	position:relative;
-	margin-top:80px;
-	margin-left:auto;
-	margin-right:auto;
-	width:50%;
+	display:inline-block;
 
 }
 #searchwrap{
@@ -29,13 +25,7 @@ body{
 }
 
 #picform{
-	position:absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-	margin-bottom:50%;
-    transform: translate(-50%, -50%);
-	padding:0;
+	
 }
 input[type="file"]{
          
@@ -68,6 +58,7 @@ input[type="file"]{
 </head>
 
 <body>
+<div id="dashboardHeader" >
 <div id="userpic">
 <form  id="picform" action="dashboard.php" method="post" enctype="multipart/form-data">
 <div class="pictureUploadDiv">
@@ -75,7 +66,7 @@ input[type="file"]{
 	 <img id="profileavatarimg" width=80px; height=80px; name="profileImage" style="background-color:#DCE1E3;border-radius: 50%;padding:10px"/>
 
   </label>
-<input type="file" name="dashboardpic" id="pictureupload">
+<input type="file" name="dashboardpic" id="pictureupload" onchange="" >
 </div>
 <div class="pictureUploadDiv" ">
 <span id="username"></span>
@@ -87,6 +78,12 @@ input[type="file"]{
 <input type="submit" id="avatarremove" name="avatardelete">
 </div>
 </form>
+</div>
+<div  id="myAccount">
+
+</div>
+<div id="history"></div>
+
 </div>
 </body>
 
@@ -115,7 +112,10 @@ else{
 
 </script>
 <?php
-   if (isset($_POST['avatarapprove']) AND strlen($_FILES["dashboardpic"]["name"])>0) {
+   if (isset($_POST['avatarapprove']) AND strlen($_FILES["dashboardpic"]["name"])>0 ) {
+	   $check_if_image = getimagesize($_FILES["dashboardpic"]["tmp_name"]);
+            if($check_if_image !== false) {
+
 	    $host = "localhost";
         $username = "root";
         $databasepassword = "database1234567";
@@ -156,9 +156,10 @@ else{
 	   
 	   
         }
-	   $_FILES="";
-	   echo "<script>document.getElementById('pictureupload').value=null;</script>";
-	   
+	  // echo "<script>document.getElementById('pictureupload').value=null;</script>";
+			}
    }
+   
+  
 
 ?>
