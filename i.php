@@ -5,6 +5,41 @@
 
 
 ?>
+<script>
+ 
+ var avatar="<?php echo $_SESSION['avatar'];?>";
+ if(avatar!=null){
+	 	document.getElementById('avatarimg').src="useruploads/"+avatar;
+        document.getElementById('avatarimg').style.backgroundColor='';
+ }
+ 
+ var slideIndex=0;
+ var slide=document.getElementsByClassName("slideimage");
+ showslides();
+
+ function showslides(){
+
+ for(i=0;i<slide.length;++i){
+
+ if(i!=slideIndex){
+ slide[i].style.display="none";
+ }
+ else{
+  slide[i].style.display="block";
+
+ }
+ }
+ ++slideIndex;
+ if(slideIndex==slide.length){
+ slideIndex=0;
+ }
+setTimeout(showslides,5000);
+
+ 
+ }
+
+
+ </script>
 <!DOCTYPE html>
 <html>
 
@@ -95,48 +130,6 @@ height:500px;
 display:none;
 }
 
-#searchimage{
-position:absolute;
-top: 50%;
-left:50%; 
- transform: translate(-50%, -50%);
-}
-
-
-#searchwrap{
-position:absolute;
-display:inline-block;
-margin:auto;
-top: 50%;
-left:50%; 
- transform: translate(-50%, -50%);
-}
-
-.searchTerm {
-  width: 350px;
-  border: 3px solid #777777;  
-  height: 40px;
-  border-radius: 5px 5px 5px 5px;
-  outline: none;
-  color: gray;
-  margin:0px;
-  padding:0px;
-}
-
-
-#searchButton {
-position:relative;
-left:0;
-  width: 40px;
-  height:auto;
-  border: 1px solid #00B4CC;
-  background: #DCE1E3;
-  color: #fff;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-  margin:0;
-  padding:0;
-}
 
 
 .fade {
@@ -187,89 +180,5 @@ AluminiDonate
 
 </body>
 
- <script>
  
- var avatar="<?php echo $_SESSION['avatar'];?>";
- if(avatar!=null){
-	 	document.getElementById('avatarimg').src="useruploads/"+avatar;
-        document.getElementById('avatarimg').style.backgroundColor='';
- }
- 
- var slideIndex=0;
- var slide=document.getElementsByClassName("slideimage");
- showslides();
-
- function showslides(){
-
- for(i=0;i<slide.length;++i){
-
- if(i!=slideIndex){
- slide[i].style.display="none";
- }
- else{
-  slide[i].style.display="block";
-
- }
- }
- ++slideIndex;
- if(slideIndex==slide.length){
- slideIndex=0;
- }
-setTimeout(showslides,5000);
-
- 
- }
- function userDashDropDownHover(){
-document.getElementById("dashdropdown").style.display="block";
-}
-function userDashDropDownHoverOut(){
-document.getElementById("dashdropdown").style.display="none";
-}
-function cartHover(){
-document.getElementById("tooltip").style.display="block";
-document.getElementById("tooltext").style.display="block";
-document.getElementById("cartimage").src="images/cartorange.png";
-
-
-}
-function myAccountHover(){
-document.getElementById("myaccount").style.backgroundColor="#FF7500";
-document.getElementById("myaccountspan").style.color="white";
-document.getElementById("myaccountimage").src="images/dashboardwhite.png";
-
-
-
-}
-function loginHover(){
-document.getElementById("login").style.backgroundColor="#FF7500";
-document.getElementById("loginspan").style.color="white";
-document.getElementById("loginimage").src="images/loginwhite.png";
-}
-
-function loginHoverOut(){
-document.getElementById("login").style.backgroundColor="white";
-document.getElementById("loginspan").style.color="black";
-document.getElementById("loginimage").src="images/login.png";
-}
-
-function myAccountHoverOut(){
-document.getElementById("myaccount").style.backgroundColor="white";
-document.getElementById("myaccountspan").style.color="black";
-document.getElementById("myaccountimage").src="images/dashboard.png";
-
-}
-
-function cartHoverOut(){
-document.getElementById("tooltip").style.display="none";
-document.getElementById("tooltext").style.display="none";
-document.getElementById("cartimage").src="images/cart.png";
-
-}
-
-function toMyAccountDashboa(){
-	
-
-}
-
- </script>
 </html>
