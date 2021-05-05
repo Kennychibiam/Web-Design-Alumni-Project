@@ -1,5 +1,7 @@
 
-<?php session_start();?>
+<?php session_start();
+//include "footer.php";
+?>
 
 <!DOCTYPE html>
 
@@ -11,29 +13,28 @@
 <style>
 
 body{
-background-color: #ffffff;
+background-color:#f7f5f3;
 
 }
 
 .header{
-background-color:#ffffff;
 padding:10px;
-
-
 position:fixed;
 top:0px;
 left:0px;
 right:0px;
-z-index:30px;
+z-index:20;
+background-color:#ffffff;
 }
 #dashdropdown  {
   position:absolute;
-  z-index: 2;
   min-width:170px;
   height:auto;
-  background-color:#FFFFFF;opacity:0.9;
+  background-color:#FFFFFF;
+  opacity:0.9;
   display:none;
-  padding-top:7px;
+  padding-top:8px;
+  z-index:15;
 }
 
 .usericons{
@@ -148,8 +149,16 @@ left:0;
 
 	
 }
+#homepagename{
+	text-decoration:none;
+	color:black;
+}
 
-
+#login{
+padding-left:8px;
+padding-right:8px;
+margin:auto;
+}
 
 
 </style>
@@ -247,25 +256,22 @@ left:0;
 
 
 <script>
-
- var avatar="<?php 
- if(empty($_SESSION['avatar'])){
-	echo null; 
- }
- else{
- echo $_SESSION['avatar'];}?>";
- if(avatar!=null  || avatar!=""){
-	 	document.getElementById('avatarimg').src="useruploads/"+avatar;
+     
+ 
+ 
+ var avatar="<?php echo $_SESSION['avatar']; ?>"
+ 
+ if(avatar){
+	 document.getElementById('avatarimg').src="useruploads/"+avatar;
         document.getElementById('avatarimg').style.backgroundColor='';
-
  }
- else{
-	 	 alert("null");
+else{
+	
 
-	document.getElementById('avatarimg').src="images/defaultUserPic.png";
+	document.getElementById('avatarimg').src="images/defaultuserPic.png";
+
         document.getElementById('avatarimg').style.backgroundColor='#DCE1E3'; 
- }
-
+}
 
 function userDashDropDownHover(){
 document.getElementById("dashdropdown").style.display="block";
@@ -339,7 +345,6 @@ function toDashboard(){
 	}
 	else{
 		
-            alert("not logged");		
 			window.location.assign('login.php');
 	
 	}
