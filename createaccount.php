@@ -1,4 +1,4 @@
-<?php   session_start();
+<?php   
  include "head.php";
 
 
@@ -16,86 +16,11 @@
 
 <style>
 
-body{
-background-color: #ffffff;
-
-}
-
-.header{
-background-color:#ffffff;
-padding:10px;
-
-position:fixed;
-top:0px;
-left:0px;
-right:0px;
-z-index:30px;
-}
-#searchwrap{
-	display:none;
-	
-}
-
-#dashdropdown  {
-  position:absolute;
-  z-index: 2;
-  min-width:170px;
-  height:auto;
-  background-color:#FFFFFF;opacity:0.9;
-  display:none;
-  padding-top:7px;
-}
-
-.usericons{
-   top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  display:inline-block;
-  position:absolute;
-  right:45px;
-}
-div#dashdropdown a{
-text-decoration:none;
-color:black;
-}
-
-#tooltip{
-  position:absolute;
-  border-radius: 6px;
-  background-color:#FFFFFF;opacity:0.9;
-  min-width:80px;
-  margin-top:5px;
-    display:none;
-
-}
-#tooltext{
-  text-align:center;
-  font-size:18px;
-    display:none;
-
-}
-#cartlink{
-	text-decoration:none;
-	color:black;
-	
-}
-#myaccount{
-padding-left:8px;
-padding-right:8px;
-margin:auto;
-}
 
 
 
-.header a[href="#index"]{
-text-decoration:none;
-color:black;
-}
 
 
-form{
-	
-}
 
 #createaccountform{
 
@@ -108,11 +33,7 @@ form{
 	
 }
 
-#login{
-padding-left:8px;
-padding-right:8px;
-margin:auto;
-}
+
 
 #spancreateaccount{
 	text-align:center;
@@ -153,61 +74,15 @@ form input:focus{
 
 	
 }
-
+#searchwrap{
+	display:none;
+	
+}
 </style>
 
 </head>
 
 <body>
-<div class="header">
-<a href="#index" >
-<span style="font-size:35px;font-family:Verdana,sans-serif;">
-<img src="images/alumnicon.png" width="50px" height="50px" style="vertical-align:middle"/>AlumniDonate</span>
-</a>
-
-
-
-<div class="usericons">
-
-
-
-<div id="dashboardinfo" style="margin-right:20px; display:inline-block; position:relative" onmouseover="userDashDropDownHover()" onmouseout="userDashDropDownHoverOut()">
-
-<a href="">
-
-<img src="images/user.png" width="50px" height="35px" />
-</a>
-<div id="dashdropdown">
-<div id="myaccount" style="padding-bottom:13px;" onmouseover="myAccountHover()" onmouseout="myAccountHoverOut()">
-
-<a href="">
-<span id="myaccountspan" > <img id="myaccountimage" src="images/dashboard.png" width="20px" height="20px" style="vertical-align:middle;margin-right:10px"/>My Account</span>
-</a>
-</div>
-<a href="login.php" target="_blank">
-<div style="padding-bottom:13px;" id="login" onmouseover="loginHover()" onmouseout="loginHoverOut()" >
-
-<span  id="loginspan"><img id="loginimage" src="images/login.png" width="20px" height="20px" style="vertical-align:middle;margin-right:10px"/>Login/Sign Up</span>
-</div>
-</a>
-</div>
-
-</div>
-
-<a id="cartlink" href="">
-<div id="cart" style="display:inline-block; position:relative" >
-
-
-<img src="images/cart.png" id="cartimage" width="50px" height="35px" onmouseover="cartHover()" onmouseout="cartHoverOut()"/>
-
-<div id="tooltip" >
-<span id="tooltext">View Cart</span>
-</div>
-​</div>
-</a>
-</div>
-
-</div>
 
 
 
@@ -215,7 +90,7 @@ form input:focus{
 
 
 <div id="createaccountform">
-<div  id="spancreateaccount"><span   style="font-size:30px;color:grey;">CREATE AN ACCOUNT</span></div>
+<div  id="spancreateaccount" style="margin-bottom:30px"><span   style="font-size:30px;color:grey;">CREATE AN ACCOUNT</span></div>
 
 
 
@@ -246,7 +121,7 @@ form input:focus{
 <div style="display:inline-block" ><input style="margin-top:50px;width:300px" type="password" name="password" placeholder="Password" value="" required></div>
 <div style="display:inline-block"  ><input style="margin-top:50px;width:300px;margin-left:20px"type="password" name="confirm" placeholder="Confirm "  required></div>
 
-<input type="submit" id="submitbutton" value="CREATE ACCOUNT" onsubmit="processLogIn()">
+<input type="submit" id="submitbutton" value="CREATE ACCOUNT" >
 
 
 
@@ -332,7 +207,6 @@ document.getElementById("cartimage").src="images/cart.png";
 		}
 	}
 
-	echo "<br><br>$canProcess";
 	if($canProcess){
 $host = "localhost";
 $username = "root";
@@ -368,6 +242,20 @@ else{
 	$sql="Insert Into user(matricno,firstname,lastname,email,phone,password,status) VALUES($matricno,'$firstname','$lastname','$email','$phone','$password','$status');";
 	mysqli_query($conn, $sql);
 	mysqli_close($conn);
+	
+	$_SESSION["firstname"]=$firstname;
+	$_SESSION["lastname"]=$lastname;
+	$_SESSION["status"]=$status;
+	$_SESSION["matricno"]=$matricno;
+	$_SESSION["email"]=$email;
+	$_SESSION["password"]=$password;
+	$_SESSION["phone"]=$phone;
+    $_SESSION["isLoggedIn"]=true;
+
+	
+				echo "<script> window.location.assign('dashboard.php'); </script>";
+
+	
 }
 }
 	else{
