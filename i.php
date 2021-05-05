@@ -47,82 +47,19 @@ setTimeout(showslides,5000);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 
-body{
-background-color: #DCE1E3;
-}
-.header{
-background-color:#ffffff;
-padding:10px;
 
-position:fixed;
-top:0px;
-left:0px;
-right:0px;
-z-index:2px;
-}
-#dashdropdown  {
-  position:absolute;
-  z-index: 2;
-  min-width:170px;
-  height:auto;
-  background-color:#FFFFFF;opacity:0.9;
-  display:none;
-  padding-top:7px;
-}
-
-.usericons{
-   top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  display:inline-block; 
-  position:absolute; 
-  right:50px;
-}
-div#dashdropdown a{
-text-decoration:none;
-color:black;
-}
-
-#tooltip{
-  position:absolute;
-  border-radius: 6px;
-  background-color:#FFFFFF;opacity:0.9;
-  min-width:80px;
-  margin-top:5px;
-    display:none;
-
-}
-#tooltext{
-  text-align:center;
-  font-size:18px;
-    display:none;
-
-}
-#myaccount{
-padding-left:8px;
-padding-right:8px;
-margin:auto;
-}
-#login{
-padding-left:8px;
-padding-right:8px;
-margin:auto;
-}
-.header a[href="#index"]{
-text-decoration:none;
-color:black;
-}
 
 .slideshow{
 position:absolute;
   z-index:-1;
-  margin-top:80px;
+  margin-top:0px;
   left:0px;
   right:0px;
+  width:100%;
+   margin:auto;
 
 }
 .slideimage{
-  float:left;
 
 object-fit:fill;
 width:70%;
@@ -154,7 +91,19 @@ display:none;
   .text {font-size: 11px}
 }
 
-
+#productTable{
+	top:600;
+	position:relative;
+	margin-bottom:200px;
+}
+table{padding-bottom:200px;}
+td{text-align:center;
+    width:25%;
+}
+caption{
+	margin-bottom:50px
+	
+}
 </style>
 <head>
 <title>
@@ -177,7 +126,19 @@ AluminiDonate
 <img class="slideimage fade" src="images/slideshow3.jpg" />
 
 </div>
+<div id="productTable">
+<table>
+<caption>PRODUCTS</caption>
+<tr>
+<td><div ><div><img  width=150; height=200;  src="productImages/laptopcase.jpg"/></div><div><span>Laptop Bag</span></div><div><span>Product Owner:Chijioke Ibiam</span></div></div></td>  
+<td><div ><img  width=150; height=200;  src="productImages/newschoolbag.jpg"/><div><span>School Bag</span></div><div><span>Product Owner:Chijioke Ibiam</span></div></div></td>
+<td><div ><img  width=150; height=200;  src="productImages/iron.jpg"/><div><span>Iron</span></div><div><span>Product Owner:Chijioke Ibiam</span></div></div></td>
 
+
+</tr>
+
+</table>
+</div>
 </body>
 
  
