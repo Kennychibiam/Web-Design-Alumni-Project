@@ -8,16 +8,19 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 <style>
 footer{ 
-    position: fixed;
-    bottom: 0;
+    position:fixed;
+    bottom:0;
+	left:0;
+    width: 100%;
+    background-color:grey;
+    margin-top:auto;
+
 }
 @media (max-height:800px){
-    footer { position: static;}
 }
+
 .the-footer{
-    background-color: #000000;
     box-sizing: border-box;
-    width: 100%
     text-align: left;
     font: bold 12px sans-serif;
     padding: 50px 50px 60px 50px;
@@ -42,7 +45,7 @@ footer{
 }
 
 .the-footer .footer-company{
-    color: #ffffff;
+    color: #daa520;
     font-size: 14px;
     font-weight: normal;
     margin: 0;
@@ -51,7 +54,8 @@ footer{
     width:25%;
 }
 .the-footer .footer-center i{
-    color: #ffffff;
+        color: #daa520;
+
     font-size: 25px;
     width: 28px;
     height: 28px;
@@ -79,7 +83,7 @@ footer{
 }
 .the-footer .footer-company-about{
     line-height: 20px;
-    color: #ffffff;
+      color: #daa520;
     font-size: 13px;
     font-weight: normal:
     margin: 0
@@ -127,7 +131,7 @@ footer{
 <body>
 <footer class="the-footer">
                     <div class="footer-left">
-                       <img src="alumnicon.png">
+                       <img src="images/alumnicon.png">
                        <h4>About<span>ALUMNI DONATE</span></h4>
                        <p class="footer-company">&#169 2021 ALUMNI DONATE ltd.</p>
                     </div>
