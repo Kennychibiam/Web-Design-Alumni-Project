@@ -1,6 +1,5 @@
 <?php 
 
-session_start();
 include "head.php"?>
 
 
@@ -77,6 +76,15 @@ a[href="createaccount.php"]{
 	
 }
 .hidden{display:none;}
+body{
+	
+	
+	
+}
+
+
+
+
 
 </style>
 
@@ -143,7 +151,7 @@ $password= $_POST["password"];
 	 
  }
  else{
-	$sql="SELECT * FROM user WHERE matricno= matricno AND password='$password'"; 
+	$sql="SELECT * FROM user WHERE matricno= $matricno AND password='$password'"; 
     $result=mysqli_query($conn,$sql);
 	
 	if(mysqli_num_rows($result)>0){
@@ -161,13 +169,23 @@ $password= $_POST["password"];
 
 			}
 			
+						
+			$_SESSION["firstname"]=$row["firstname"];
+			$_SESSION["lastname"]=$row["lastname"];
 			$_SESSION["status"]=$row["status"];
 	        $_SESSION["matricno"]=$row["matricno"];
 			$_SESSION["avatar"]=$row["avatar"];
+			$_SESSION["email"]=$row["email"];
+			$_SESSION["password"]=$row["password"];
+			$_SESSION["phone"]=$row["phone"];
+
+
+            
 
 		}         
 		    
-			
+				        mysqli_close($conn);
+
 			echo "<script> window.location.assign('dashboard.php'); </script>";
                    exit();
 				   echo "<script>document.getElementById('matricno').value=null;
@@ -193,9 +211,3 @@ $password= $_POST["password"];
 
 ?>
 
-<script>
-
-			
-
-
-</script>
